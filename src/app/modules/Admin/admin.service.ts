@@ -2,12 +2,13 @@ import { Prisma, PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-const getAdmin = async (params: any) => {
+const getAdminFromDB = async (params: any) => {
   const { searchTerm, ...filterData } = params;
   const andConditions: Prisma.AdminWhereInput[] = [];
 
   const searchableFields = ["name", "email"];
 
+  //for search
   if (params.searchTerm) {
     andConditions.push({
       OR: searchableFields.map((fields) => ({
@@ -19,6 +20,7 @@ const getAdmin = async (params: any) => {
     });
   }
 
+  //for filter data
   if (Object.keys(filterData).length > 0) {
     andConditions.push({
       AND: Object.keys(filterData).map((key) => ({
@@ -38,5 +40,5 @@ const getAdmin = async (params: any) => {
 };
 
 export const AdminService = {
-  getAdmin,
+  getAdminFromDB,
 };

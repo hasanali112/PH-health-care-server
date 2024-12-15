@@ -19,7 +19,7 @@ const pick = <T extends Record<string, unknown>, K extends keyof T>(
 const getAllAdmins = async (req: Request, res: Response) => {
   try {
     const filter = pick(req.query, ["name", "email", "searchTerm"]);
-    const result = await AdminService.getAdmin(filter);
+    const result = await AdminService.getAdminFromDB(filter);
     res.status(200).json({
       success: true,
       message: "Admins fetched successfully",
