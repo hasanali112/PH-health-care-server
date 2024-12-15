@@ -7,7 +7,7 @@ const getAllAdmins = async (req: Request, res: Response) => {
   try {
     //for pick function ==>> jegulo match korbe sudhu seiguloi dibe nahole dibe na
     const filter = pick(req.query, adminFilterableFields);
-    const options = pick(req.query, ["limit", "page"]);
+    const options = pick(req.query, ["limit", "page", "sortBy", "sortOrder"]);
 
     const result = await AdminService.getAdminFromDB(filter, options);
     res.status(200).json({
