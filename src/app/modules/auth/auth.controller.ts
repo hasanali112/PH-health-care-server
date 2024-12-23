@@ -38,19 +38,17 @@ const refreshTokenCreate = catchAysnc(async (req, res) => {
   });
 });
 
-const changedPassword = catchAysnc(
-  async (req: Request & { user?: any }, res) => {
-    const user = req.user;
-    const result = await AuthService.changedPassword(user, req.body);
+const changedPassword = catchAysnc(async (req, res) => {
+  const user = req.user;
+  const result = await AuthService.changedPassword(user, req.body);
 
-    sendResponse(res, {
-      statusCode: 200,
-      success: true,
-      message: "Password changed successfully",
-      data: result,
-    });
-  }
-);
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: "Password changed successfully",
+    data: result,
+  });
+});
 
 const forgetPassword = catchAysnc(
   async (req: Request & { user?: any }, res) => {
