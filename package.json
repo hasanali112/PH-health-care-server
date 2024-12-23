@@ -18,6 +18,7 @@
     "http-status": "^2.0.0",
     "http-status-ts": "^2.0.1",
     "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
     "nodemailer": "^6.9.16",
     "prisma": "^6.0.1",
     "ts-node-dev": "^2.0.0",
@@ -31,6 +32,7 @@
     "@types/cors": "^2.8.17",
     "@types/http-status": "^1.1.2",
     "@types/jsonwebtoken": "^9.0.7",
+    "@types/multer": "^1.4.12",
     "@types/nodemailer": "^6.4.17"
   }
 }
