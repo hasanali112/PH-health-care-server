@@ -7,8 +7,8 @@ const router = Router();
 
 router.post(
   "/",
-  fileUploader.single("file"),
-  auth("ADMIN", "SUPER_ADMIN"),
+  fileUploader.upload.single("file"),
+  // auth("ADMIN", "SUPER_ADMIN"),
   UserController.createAdmin
 );
 
