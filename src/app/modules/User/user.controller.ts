@@ -1,8 +1,8 @@
-import { Request, Response } from "express";
 import { UserService } from "./user.service";
 import catchAysnc from "../../shared/catchAsync";
 
-const createAdmin = catchAysnc(async (req: Request, res: Response) => {
+//create admin
+const createAdmin = catchAysnc(async (req, res) => {
   const result = await UserService.createAdmin(req);
   res.status(201).json({
     success: true,
@@ -11,6 +11,10 @@ const createAdmin = catchAysnc(async (req: Request, res: Response) => {
   });
 });
 
+//create doctor
+const createDoctor = catchAysnc(async (req, res) => {});
+
 export const UserController = {
   createAdmin,
+  createDoctor,
 };

@@ -17,6 +17,9 @@ const createAdminValidation = z.object({
   }),
 });
 
+const createDoctorValidation = z.object({});
+
 export const UserValidation = {
   createAdminValidation,
+  createDoctorValidation,
 };
