@@ -4,7 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only ./src/server.ts"
+    "start": "node ./dist/server.js",
+    "build": "tsc",
+    "dev": "ts-node-dev --respawn --transpile-only ./src/server.ts",
+    "migrate": "npx prisma migrate dev",
+    "studio": "npx prisma studio"
   },
   "dependencies": {
     "@prisma/client": "^6.0.1",
