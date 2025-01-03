@@ -35,11 +35,3 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 })
 
 export default app
-
-//2 te
-//meta data
-//update
-//2 type of delete 1. hard delete 2. soft delete
-//send response
-//global error handler
-//not found handler

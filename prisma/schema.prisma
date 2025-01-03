@@ -50,6 +50,7 @@ model Doctor {
   appointmentFee      Int
   qualification       String
   currentWorkingPlace String
+  designation         String
   isDeleted           Boolean  @default(false)
   createdAt           DateTime @default(now())
   updatedAt           DateTime @updatedAt
