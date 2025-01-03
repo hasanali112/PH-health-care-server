@@ -7,6 +7,13 @@ import { UserRole } from '@prisma/client'
 
 const router = Router()
 
+//get all user
+router.get(
+  '/',
+  auth(UserRole.ADMIN, UserRole.SUPER_ADMIN),
+  UserController.getAllUser,
+)
+
 //create admin
 router.post(
   '/create-admin',
@@ -31,6 +38,24 @@ router.post(
     )
     return UserController.createDoctor(req, res, next)
   },
+)
+
+//create patient
+router.post(
+  '/create-patient',
+  fileUploader.upload.single('file'),
+  (req: Request, res: Response, next: NextFunction) => {
+    req.body = UserValidation.createPatientValidation.parse(
+      JSON.parse(req.body.data),
+    )
+    return UserController.createPatient(req, res, next)
+  },
+)
+
+router.patch(
+  '/:id/status',
+  auth(UserRole.ADMIN, UserRole.SUPER_ADMIN),
+  UserController.updateUserStatus,
 )
 
 export const UserRoutes = router
