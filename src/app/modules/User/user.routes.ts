@@ -18,7 +18,7 @@ router.get(
 router.post(
   '/create-admin',
   fileUploader.upload.single('file'),
-  auth('ADMIN', 'SUPER_ADMIN'),
+  // auth('ADMIN', 'SUPER_ADMIN'),
   (req: Request, res: Response, next: NextFunction) => {
     req.body = UserValidation.createAdminValidation.parse(
       JSON.parse(req.body.data),
@@ -50,6 +50,12 @@ router.post(
     )
     return UserController.createPatient(req, res, next)
   },
+)
+
+router.get(
+  '/me',
+  auth(UserRole.ADMIN, UserRole.SUPER_ADMIN, UserRole.DOCTOR, UserRole.PATIENT),
+  UserController.getMyProfile,
 )
 
 router.patch(
