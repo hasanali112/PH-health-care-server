@@ -59,10 +59,22 @@ const updateUserStatus = catchAysnc(async (req, res) => {
   })
 })
 
+const getMyProfile = catchAysnc(async (req, res) => {
+  const user = req.user
+  const result = await UserService.getMyProfile(user)
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: 'My profile data fatch',
+    data: result,
+  })
+})
+
 export const UserController = {
   createAdmin,
   createDoctor,
   createPatient,
   getAllUser,
   updateUserStatus,
+  getMyProfile,
 }
