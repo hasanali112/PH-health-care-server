@@ -2,6 +2,7 @@ import { UserService } from './user.service'
 import catchAysnc from '../../shared/catchAsync'
 import pick from '../../shared/pick'
 import sendResponse from '../../shared/sendResponse'
+import { IAuthUser } from '../../interfaces/common'
 
 //create admin
 const createAdmin = catchAysnc(async (req, res) => {
@@ -61,11 +62,22 @@ const updateUserStatus = catchAysnc(async (req, res) => {
 
 const getMyProfile = catchAysnc(async (req, res) => {
   const user = req.user
-  const result = await UserService.getMyProfile(user)
+  const result = await UserService.getMyProfile(user as IAuthUser)
   sendResponse(res, {
     statusCode: 200,
     success: true,
     message: 'My profile data fatch',
+    data: result,
+  })
+})
+
+const updateMyProfile = catchAysnc(async (req, res) => {
+  const user = req.user
+  const result = await UserService.updateMyProfile(user as IAuthUser, req)
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: 'My profile updated',
     data: result,
   })
 })
@@ -77,4 +89,5 @@ export const UserController = {
   getAllUser,
   updateUserStatus,
   getMyProfile,
+  updateMyProfile,
 }
